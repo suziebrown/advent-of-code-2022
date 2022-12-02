@@ -1,0 +1,12 @@
+GEM
+  specs:
+    minitest (5.15.0)
+
+PLATFORMS
+  x64-mingw-ucrt
+
+DEPENDENCIES
+  minitest
+
+BUNDLED WITH
+   2.3.26
