@@ -1,5 +1,5 @@
 class Day01
-  attr_reader :input
+  attr_reader :items_by_elf
   attr_reader :number_of_elves
   attr_reader :calories_per_elf
 
@@ -10,23 +10,16 @@ class Day01
   end
 
   def read_input_file(filename)
-    lines = File.read(filename).split("\n")
-    @input = lines.map {|line| line == "" ? nil : Integer(line)}
-    @number_of_elves = (@input.select {|line| line.nil? }).length + 1
+    lines_by_elf = File.read(filename).split("\n\n")
+    @number_of_elves = lines_by_elf.length
+
+    @items_by_elf = lines_by_elf
+                      .map { |line| line.split("\n")
+                                        .map { |item| Integer(item) } }
   end
 
   def calculate_calories_per_elf
-    elf_index = 0
-    calories_per_elf[0] = 0
-
-    @input.each { |calories|
-      if calories.nil?
-        elf_index += 1
-        @calories_per_elf[elf_index] = 0
-      else
-        @calories_per_elf[elf_index] += calories
-      end
-    }
+    @calories_per_elf = @items_by_elf.map { |list| list.sum }
   end
 
   def get_maximum_calories

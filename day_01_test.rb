@@ -4,8 +4,7 @@ require_relative 'day_01'
 class Day01Test < Minitest::Test
   def test__reads_input_file
     day_01 = Day01.new("data/day_01_input_test.txt")
-    assert_equal(14, day_01.input.length)
-    assert_equal(1000, day_01.input[0])
+    assert_equal(1000, day_01.items_by_elf[0][0])
     assert_equal(5, day_01.number_of_elves)
   end
 
